@@ -12,8 +12,7 @@ int main(void) {
     for (char c : a) s1[c - 'a']++;
     for (char c : b) s2[c - 'a']++;
     for (int i = 0; i < 'z' - 'a' + 1; i++)
-        if (s1[i] != s2[i])
-            answer += abs(s1[i] - s2[i]);
+        answer += abs(s1[i] - s2[i]);
     cout << answer << '\n';
     return 0;
 }
