@@ -1,47 +1,37 @@
-#include <bits/stdc++.h>
+#include "bits/stdc++.h"
+
 using namespace std;
 
-int main(void) 
-{
-  ios::sync_with_stdio(0);
-  cin.tie(0);
+int main(void) {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
 
-  stack<int> S;
-  int n;
-  cin >> n;
-  while (n--)
-  {
-    string init;
-    cin >> init;
-    if (!init.compare("push"))
-    {
-      int k;
-      cin >> k;
-      S.push(k);
+    int n, k;
+    stack<int> P;
+    string s;
+
+    cin >> n;
+    while (n--) {
+        cin >> s;
+        if (s == "push") {
+            cin >> k;
+            P.push(k);
+        } else if (s == "pop") {
+            if (P.empty()) cout << -1 << '\n';
+            else {
+                cout << P.top() << '\n';
+                P.pop();
+            }
+        } else if (s == "size") {
+            cout << P.size() << '\n';
+        } else if (s == "empty") {
+            cout << P.empty() << '\n';
+        } else if (s == "top") {
+            if (P.empty()) cout << -1 << '\n';
+            else {
+                cout << P.top() << '\n';
+            }
+        }
     }
-    else if (!init.compare("pop"))
-    {
-      if (S.empty()) cout << -1 << '\n';
-      else 
-      {
-        cout << S.top() << '\n';
-        S.pop();
-      }
-    }
-    else if (!init.compare("size"))
-    {
-        cout << S.size() << '\n';
-    }
-    else if (!init.compare("empty"))
-    {
-        if (S.empty()) cout << 1 << '\n';
-        else cout << 0 << '\n';
-    }
-    else if (!init.compare("top"))
-    {
-        if (S.empty()) cout << -1 << '\n';
-        else cout << S.top() << '\n';
-    }
-  }
-  return 0;
+    return 0;
 }
