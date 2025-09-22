@@ -27,12 +27,8 @@ int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
     
-    fill(isused, isused + 8, false);
-
     cin >> n >> m;
-    for (int i = 0; i < n; i++) {
-        cin >> input[i];
-    }
+    for (int i = 0; i < n; i++) cin >> input[i];
     sort(input, input + n);
     f(0);
     return 0;
