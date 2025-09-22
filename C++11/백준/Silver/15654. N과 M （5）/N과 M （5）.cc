@@ -3,22 +3,22 @@
 using namespace std;
 
 int n, m;
-vector<int> input;
+int input[8];
 int arr[8];
-bool isused[10001];
+bool isused[8];
 
 void f(int k) {
     if (k == m) {
-        for (int i = 0; i < k; i++) cout << arr[i] << ' ';
+        for (int i = 0; i < k; i++) cout << input[arr[i]] << ' ';
         cout << '\n';
         return ;
     }
-    for (auto iter = input.begin(); iter < input.end(); iter++) {
-        if (!isused[*iter]) {
-            isused[*iter] = true;
-            arr[k] = *iter;
+    for (int i = 0; i < n; i++) {
+        if (!isused[i]) {
+            isused[i] = true;
+            arr[k] = i;
             f(k + 1);
-            isused[*iter] = false;
+            isused[i] = false;
         }
     }
 }
@@ -31,11 +31,9 @@ int main(void) {
 
     cin >> n >> m;
     for (int i = 0; i < n; i++) {
-        int p;
-        cin >> p;
-        input.push_back(p);
+        cin >> input[i];
     }
-    sort(input.begin(), input.end());
+    sort(input, input + n);
     f(0);
     return 0;
 }
