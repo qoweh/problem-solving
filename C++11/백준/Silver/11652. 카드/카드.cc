@@ -3,31 +3,32 @@
 using namespace std;
 
 int n;
-map<long long, int> M;
+long long arr[100010];
+
 
 int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
     cin >> n;
-    for (int i = 0; i < n; i++) {
-        long long L;
-        cin >> L;
-        M[L]++;  // 카운트 증가
-    }
+    for (int i = 0; i < n; i++) cin >> arr[i]; 
+    sort(arr, arr + n);
 
-    int max_count = 0;
-    long long result = 0;
-    
-    for (auto& m : M) {
-        if (m.second > max_count 
-            || (m.second == max_count && m.first < result)) {
-                max_count = m.second;
-                result = m.first;
+    int cnt = 1;
+    long long mxval = arr[0];
+    int mxcnt = 0;
+    for (int i = 1; i < n; i++) {
+        if (arr[i] != arr[i-1]) {
+            if (mxcnt < cnt) {
+                mxval = arr[i-1];
+                mxcnt = cnt;
             }
+            cnt = 1;
+        } else {
+            cnt++;
+        }
     }
-
-    cout << result;
-
+    if (mxcnt < cnt) mxval = arr[n-1];
+    cout << mxval;
     return 0;
 }
