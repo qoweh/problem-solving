@@ -6,17 +6,17 @@ int a, b;
 int arr1[20010], arr2[20010];
 
 void f() {
-    int p = 0;
     sort(arr1, arr1 + a);
     sort(arr2, arr2 + b);
+    
+    int j = 0;
+    long long result = 0;
+
     for (int i = 0; i < a; i++) {
-        for (int j = 0; j < b; j++) {
-            if (arr1[i] > arr2[j]) {
-                p++;
-            } else break;
-        }
+        while (j < b && arr2[j] < arr1[i]) j++;
+        result += j;
     }
-    cout << p << '\n';
+    cout << result << '\n';
 }
 
 int main(void) {
