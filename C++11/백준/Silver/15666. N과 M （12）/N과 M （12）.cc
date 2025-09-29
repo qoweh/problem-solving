@@ -12,11 +12,10 @@ void f(int k) {
         cout << '\n';
         return ;
     }
-    int st = 0;
-    if (k != 0) st = idx[k-1];
+    
     int same_v = 0;
-    for (int i = st; i < n; i++) {
-        if (same_v != arr[i]) {
+    for (int i = 0; i < n; i++) {
+        if (same_v != arr[i] && idx[k - 1] <= i) {
             same_v = arr[i];
             idx[k] = i;
             f(k + 1);
