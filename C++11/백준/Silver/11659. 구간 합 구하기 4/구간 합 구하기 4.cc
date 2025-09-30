@@ -12,15 +12,11 @@ int main(void) {
     cin >> n >> m;
     int arr[100010];
     for (int i = 1; i <= n; i++) cin >> arr[i];
-    D[1] = arr[1];
-    for (int i = 2; i <= n; i++) {
-        D[i] = D[i-1] + arr[i];
-    }
+    for (int i = 1; i <= n; i++) D[i] = D[i-1] + arr[i];
     for (int i = 0; i < m; i++) {
         int a, b;
         cin >> a >> b;
-        if (a == b) cout << arr[a] << '\n'; 
-        else cout << D[b] - D[a-1] << '\n'; 
+        cout << D[b] - D[a-1] << '\n'; 
     }
     return (0);
 }
