@@ -2,31 +2,25 @@
 
 using namespace std;
 
-int k;
-int res;
-
-void f(int depth, int cur) {
-    if (depth > k) return ;
-    else if (cur == k) {
-        res++ ;
-        return ;
-    }
-    for (int i = 1; i <= 3; i++) {
-        f(depth + 1, cur + i);
-    }
-}
+int D[11];
 
 int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
+    D[1] = 1;
+    D[2] = 2;
+    D[3] = 4;
+    for (int i = 4; i <= 11; i++) {
+        D[i] = D[i-1] + D[i-2] + D[i-3];
+    }        
+
     int n;
     cin >> n;
     while (n--) {
-        res = 0;
+        int k;
         cin >> k;
-        f(0, 0);
-        cout << res << '\n';
+        cout << D[k] << '\n';
     }
     return (0);
 }
