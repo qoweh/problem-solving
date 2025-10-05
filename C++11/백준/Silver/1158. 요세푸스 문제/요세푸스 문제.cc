@@ -2,31 +2,24 @@
 
 using namespace std;
 
-bool s[5005];
-
 int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int n, k, c = 0;
+    int n, k;
     cin >> n >> k;
-    
-    list<int> L;
-    for (int i = 1; i <= n; i++) L.push_back(i);
-    list<int>::iterator iter = L.end();
-    iter--;
-    
+    queue<int> Q;
+    for (int i = 1; i <= n; i++) Q.push(i);
+
     cout << '<';
-    while (!L.empty()) {
-        int rep = k;
-        while (rep--) {
-            iter++;
-            if (iter == L.end()) iter = L.begin();
+    while (!Q.empty()) {
+        for (int i = 1; i <= k - 1; i++) {
+            Q.push(Q.front());
+            Q.pop();
         }
-        cout << *iter;
-        if (L.size() != 1) cout << ", ";
-        iter = L.erase(iter);
-        iter--;
+        cout << Q.front();
+        Q.pop();
+        if (Q.size() != 0) cout << ", ";
     }
     cout << '>';
     return (0);
