@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// int s[100010];
+//int s[100010];
 int s[2000010];
 
 int main(void) {
