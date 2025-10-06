@@ -2,28 +2,23 @@
 
 using namespace std;
 
-//int s[100010];
-int s[2000010];
-
 int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    
+
     int n, x;
+    bool s[2000010] = {false};
     cin >> n;
-    for (int i = 0; i < n; i++) {
-        int p;
-        cin >> p;
-        s[p]++;
+    for (int i = 0 ; i < n; i++) {
+        int k;
+        cin >> k;
+        s[k] = true;
     }
     cin >> x;
-
-    int result = 0;
-    for (int i = 1; i <= (x-1) / 2; i++) {
-        if (s[i] == 1 && s[x - i] == 1) {
-            result++;
-        }
+    int res = 0;
+    for (int i = 1; i <= (x-1)/2; i++) {
+        if (s[i] && s[x-i]) res++;
     }
-    cout << result;
-    return 0;
+    cout << res;
+    return (0);
 }
