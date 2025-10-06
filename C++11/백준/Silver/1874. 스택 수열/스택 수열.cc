@@ -2,37 +2,33 @@
 
 using namespace std;
 
-int n;
-int arr[100010];
-char result[100010 * 2];
-stack<int> S;
-
-
 int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    
-    cin >> n;
-    for (int i = 1; i <= n; i++) cin >> arr[i];
+    int n, pre = 0;
+    string res;
+    stack<int> S;
 
-    int idx = 0;
-    int k = 1;
-    int l = 1;
-    while (l <= n) {
-        S.push(l);
-        result[idx++] = '+';
-        while (!S.empty() && S.top() == arr[k]) {
-            S.pop();
-            result[idx++] = '-';
-            k++;
+    cin >> n;
+    int x = 1;
+    while (n--) {
+        int cur;
+        cin >> cur;
+        if (cur > pre) {
+            for (int i = pre; i < cur; i++) {
+                res += "+\n";
+                S.push(x++);
+            }
+        } 
+        if (cur != S.top()) {
+            cout << "NO";
+            return 0;
         }
-        l++;
+        S.pop();
+        res += "-\n";
+        pre = max(cur, pre);
     }
-    if (S.empty()) {
-        for (int i = 0; i < idx; i++) cout << result[i] << '\n';
-    } else {
-        cout << "NO\n";
-    }
+    cout << res;
     return (0);
 }
