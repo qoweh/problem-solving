@@ -8,18 +8,18 @@ int main(void) {
 
     int n, k;
     cin >> n >> k;
+
     queue<int> Q;
     for (int i = 1; i <= n; i++) Q.push(i);
-
     cout << '<';
     while (!Q.empty()) {
-        for (int i = 1; i <= k - 1; i++) {
+        for (int i = 0; i < k-1; i++) {
             Q.push(Q.front());
             Q.pop();
         }
         cout << Q.front();
+        if (Q.size() != 1) cout << ", ";
         Q.pop();
-        if (Q.size() != 0) cout << ", ";
     }
     cout << '>';
     return (0);
