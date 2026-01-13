@@ -9,12 +9,13 @@ int main(void) {
     int i = 2, n;
     cin >> n;
  
-    while (n != 1) {
+    while (i * i <= n) {
         if (n % i == 0) {
             cout << i << '\n';
             n /= i;
         } else i++;
     }
+    if (n != 1) cout << n << '\n';
 
     return (0);
 }
