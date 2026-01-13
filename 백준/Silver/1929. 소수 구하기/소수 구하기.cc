@@ -6,7 +6,8 @@ vector<bool> V(1000010, true);
 
 void f(int last) {
 	for (int i = 2; i < last; i++) {
-		for (int j = i + i; j <= last; j += i) {
+		if (!V[i]) continue;
+		for (long long j = i + i; j <= last; j += i) {
 			V[j] = false;
 		}
 	}
