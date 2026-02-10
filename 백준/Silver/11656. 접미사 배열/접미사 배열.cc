@@ -1,8 +1,8 @@
 #include <iostream>
 #include <algorithm>
-using namespace std;
+#include <vector>
 
-string arr[1000];
+using namespace std;
 
 int main() {
 	ios::sync_with_stdio(false);
@@ -10,16 +10,17 @@ int main() {
 
 	string s;
 	cin >> s;
+	vector<string> v;
+	v.reserve(s.size());
 
-	arr[0] = string(1, s[s.size() - 1]);
-	for (int i = 1; i < s.size(); i++) {
-		arr[i] = string(1, s[s.size() - 1 - i]) + arr[i - 1];
+	for (int i = s.size() - 1; i >= 0; i--) {
+		v.push_back(s.substr(i));
+	}
+	sort(v.begin(), v.end());
+	for (auto& c : v) {
+		cout << c <<'\n';
 	}
 
-	sort(arr, arr + s.size());
-
-	for (int i = 0; i < s.size(); i++) {
-		cout << arr[i] << '\n';
-	}
+	
 	return 0;
 }
