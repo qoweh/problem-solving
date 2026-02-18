@@ -5,7 +5,7 @@ using namespace std;
 
 list<int> L;
 
-void f(int& step, list<int>::iterator& iter) {
+void f(int& step) {
 	while (!L.empty()) {
 		int k = step;
 		while (k-- > 0) {
@@ -25,10 +25,9 @@ int main() {
 	int n, k;
 	cin >> n >> k;
 	for (int i = 1; i <= n; i++) L.push_back(i);
-
-	list<int>::iterator iter = L.begin();
+	
 	cout << '<';
-	f(k, iter);
+	f(k);
 	cout << '>';
 	return 0;
 }
