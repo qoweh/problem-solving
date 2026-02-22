@@ -3,8 +3,8 @@
 
 using namespace std;
 
-int dx[] = {0, 0, 0, 1, 1, 1, -1, -1, -1};
-int dy[] = {0, 1, -1, 0, 1, -1, 0, 1, -1};
+int dx[] = {0, 0, 1, 1, 1, -1, -1, -1};
+int dy[] = {1, -1, 0, 1, -1, 0, 1, -1};
 
 
 int solution(vector<vector<int>> board) {
@@ -20,7 +20,7 @@ int solution(vector<vector<int>> board) {
     }
 
     for (auto& c : t) {
-        for (int i = 0 ; i < 10; i++) {
+        for (int i = 0 ; i < 8; i++) {
             auto [x, y] = c;
             x += dx[i];
             y += dy[i];
