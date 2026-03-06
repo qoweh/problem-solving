@@ -3,7 +3,7 @@
 #include <queue>
 using namespace std;
 
-int n, arr[1'000'000];
+int n, arr[1'000'001];
 queue<pair<int, int>> q;
 
 int main() {
